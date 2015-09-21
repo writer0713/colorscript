@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+.fl {
+  float: left;
+}
+
+#editor{
+	padding: 0 0 0 25px;
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	overflow: auto;
+	overflow-y: scroll;
+}
+
+#editor pre{
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+#editor #linenumber{
+	color: #666;
+	padding-top: 10px;
+	padding-right: 10px;
+	border-right: 1px solid #ccc;
+}
+
+#editor #linenumber ol{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#editor #linenumber ol li{
+	margin: 0;
+	padding: 0;
+
+	width: 45px;
+	height: 14px;
+	text-align: right;
+}
+
+#editor #text-area{
+	position: relative;
+}
+
+#editor #text-area #code-text{
+	width: 900px;
+	height: 250px;
+	border: none;
+	outline: none;
+	margin: 0;
+	padding: 10px 7px;
+	tab-size: 4;
+}
+
+#editor #text-area #code-text div{
+	word-wrap: normal;
+	-ms-word-break: normal;
+	word-break: normal;
+	word-break: normal;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	hyphens: none;
+	white-space: pre;
+	min-width: 1px;
+	height: 14px;
+}
+#editor #text-area #code-text p{
+	margin: 0;
+	padding: 0;
+	height: 14px;
+}
+
+#bottom-tools{
+	position: fixed;
+	right: 30px;
+	bottom: 20px;
+}
+
+#bottom-tools .common-btn.final{
+	min-width: 87px;
+	margin-left: 5px;
+}
+
+#bottom-tools #clipboard-alternativa-container{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#bottom-tools #clipboard-alternativa{
+	opacity: 0.1;
+	-moz-opacity: 0.1;
+	filter: alpha(opacity=10);
+}
+
+#version{
+	position: fixed;
+	left: 30px;
+	bottom: 20px;
+	color: #ccc;
+	font-size: 9px;
+	vertical-align: middle;
+	background-color: rgba(255,255,255,0.9);
+}
+
+#version a{ color: #ccc; text-decoration: none; }
+
+i.up{
+	display: inline-block;
+	*zoom: 1;
+
+	width: 13px;
+	height: 10px;
+	background-image: url("../images/up.png");
+	vertical-align: middle;
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.setting-icon{
+		background-image: url("../images/setting-icon@2x.png");
+		background-size: 15px 15px;
+	}
+
+	#bar #select-language-popup ul li.selected:before,
+	#bar #select-stylepackage-popup ul li.selected h4:before{
+		background-image: url("../images/check-icon@2x.png");
+		background-size: 36px 10px;
+	}
+
+	#bar #select-stylepackage-popup ul li.selected h4:before{
+		background-position: -24px 0;
+	}
+
+}
