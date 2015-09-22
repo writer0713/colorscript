@@ -1,6 +1,6 @@
 _log('utility.js is loaded successfully');
 
-(function() {
+(function($) {
 
   var colorscript = window.colorscript || {};
   colorscript.option = {
@@ -15,8 +15,48 @@ _log('utility.js is loaded successfully');
     turnOffLineNumber: function() {
       colorscript.option.linenumber = "off";
       $('div#linenumber').hide();
+    },
+
+    changeLineNumber: function() {
+      if(colorscript.option.lineNumber == "off") return;
+      var ol = $('div#linenumber ol');
+      /* div가 한개 남았을때 백스페이스로 지울경우 div가 지워지면서 갯수가 0이 된다.
+      이때 div를 하나 추가해주고 div_count를 강제로 1로 변환해준다.*/
+      var div_count_in_pre = ($('pre#code-text div').length == 0) ? (function() {
+        $('pre#code-text').find('br').remove().end().append('<div></div>');
+        return 1;
+      })() : $('pre#code-text div').length;
+
+      var linenumber = $('div#linenumber ol li').length;
+      var len = div_count_in_pre - linenumber;
+      var min_linenum_to_add = linenumber + 1;
+      var i = 0;
+
+      // 라인넘버와 div 갯수가 같을때
+      if(len == 0) return;
+
+      // div 갯수가 라인넘버보다 많을때
+      if(len > 0) {
+
+        for(; i < len; i++) {
+          $('<li>' + min_linenum_to_add++ + '</li>').appendTo(ol);
+        }
+        return;
+      }
+
+      // 라인 넘버가 div 갯수보다 많을때
+      if(len < 0) {
+        len = Math.abs(len);
+        while(len > 0) {
+          len--;
+          var li_length = ol.children().length;
+          ol.children()[li_length - 1].remove();
+        }
+        return;
+      }
     }
+
   };
 
   window.colorscript = colorscript;
-})();
+})(jQuery);
