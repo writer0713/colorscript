@@ -4,8 +4,16 @@ _log('utility.js is loaded successfully');
 
   var colorscript = window.colorscript || {};
   colorscript.option = {
-      "lineNumber": "on"
+      "lineNumber": "on",
+      "mode" : "text",
+      "theme" : "none"
   };
+
+  colorscript.optionList = {
+    "mode" : ["text", "javascript"],
+    "theme" : ["none"]
+  }
+
   colorscript.util = {
     turnOnLineNumber: function() {
       colorscript.option.linenumber = "on";
@@ -15,6 +23,31 @@ _log('utility.js is loaded successfully');
     turnOffLineNumber: function() {
       colorscript.option.linenumber = "off";
       $('div#linenumber').hide();
+    },
+
+    // colorscript의 언어 모드를 설정 (text, javascript 등)
+    setMode: function(mode) {
+      if(!this.isExist(mode, colorscript.optionList.mode)) {
+        throw new Error("해당하는 모드가 없습니다");
+      }
+
+      colorscript.option.mode = mode;
+
+      // 사용할 regex 종류 설정
+    },
+
+    // 일반적으로 optionList에 원하는 요소가 있는지 검사
+    isExist: function(elem, arr) {
+      if(Object.prototype.toString.call(arr) != "[object Array]") {
+        throw new Error("배열이 아닙니다.");
+      }
+
+      for(var i in arr) {
+        if(arr[i] == elem) {
+          return true;
+        }
+      }
+      return false;
     },
 
     changeLineNumber: function() {
