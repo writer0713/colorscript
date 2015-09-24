@@ -5,7 +5,9 @@
 }
 
 #editor{
-	padding: 0 0 0 25px;
+	padding: 20px 0 0 25px;
+  max-height: 300px;
+  height: 300px;
 	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 	overflow: auto;
 	overflow-y: scroll;
@@ -17,6 +19,7 @@
 
 #editor #linenumber{
 	color: #666;
+  max-height: 300px;
 	padding-top: 10px;
 	padding-right: 10px;
 	border-right: 1px solid #ccc;
@@ -39,11 +42,12 @@
 
 #editor #text-area{
 	position: relative;
+  max-height: 300px;
 }
 
 #editor #text-area #code-text{
 	width: 900px;
-	height: 250px;
+	height: 500px;
 	border: none;
 	outline: none;
 	margin: 0;

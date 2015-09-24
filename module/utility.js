@@ -13,7 +13,7 @@ _log('utility.js is loaded successfully');
 
   colorscript.optionList = {
     "mode" : ["text", "javascript"],
-    "theme" : ["none"]
+    "theme" : ["default", "sublime-black"]
   }
 
   colorscript.util = {
@@ -35,7 +35,46 @@ _log('utility.js is loaded successfully');
 
       colorscript.option.mode = mode;
 
+      this.loadMode(mode);
       // 사용할 regex 종류 설정
+    },
+
+    loadMode: function(modeName) {
+      var prevMode = document.getElementById('mode_js');
+      if(prevMode != null) prevMode.parentNode.removeChild(prevMode);
+
+      if(prevMode == "text") return;
+
+      var link = document.createElement("script");
+      link.type = "text/javascript";
+      link.src = "./mode/" + modeName + ".js";
+      link.id = "mode_js";
+
+      document.body.appendChild(link);
+    },
+
+    setTheme: function(themeName) {
+      if(!this.isExist(themeName, colorscript.optionList.theme)) {
+        throw new Error("해당하는 테마가 없습니다")
+      }
+
+      colorscript.option.theme = themeName;
+
+      this.loadTheme(themeName);
+    },
+
+    loadTheme: function(themeName) {
+      var prevTheme = document.getElementById('theme_css');
+      if(prevTheme != null) prevTheme.parentNode.removeChild(prevTheme);
+
+      if(themeName == "none") return;
+
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "./theme/" + themeName + ".css";
+      link.id = "theme_css";
+
+      document.getElementsByTagName("head")[0].appendChild(link);
     },
 
     // 일반적으로 optionList에 원하는 요소가 있는지 검사

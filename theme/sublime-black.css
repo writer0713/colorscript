@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+#editor {background-color: rgb(39, 39, 39);}
+p {color: rgb(240, 240, 240);}
+
+.cs-sublime-black-background-color-0{color:#}
+.cs-sublime-black-background-color-1{color:2}
+.cs-sublime-black-background-color-2{color:7}
+.cs-sublime-black-background-color-3{color:2}
+.cs-sublime-black-background-color-4{color:7}
+.cs-sublime-black-background-color-5{color:2}
+.cs-sublime-black-background-color-6{color:7}
+.cs-sublime-black-plain-normal{color:#f0f0f0}
+.cs-sublime-black-common-normal{color:#f0f0f0}
+.cs-sublime-black-common-string{color:#ffd500}
+.cs-sublime-black-common-comment{color:#999999}
+.cs-sublime-black-common-number{color:#c10aff}
+.cs-sublime-black-common-keyword0{color:#4be6fa}
+.cs-sublime-black-common-keyword1{color:#ff3399}
+.cs-sublime-black-common-keyword2{color:#0086b3}
+.cs-sublime-black-markup-normal{color:#f0f0f0}
+.cs-sublime-black-markup-string{color:#ffd500}
+.cs-sublime-black-markup-comment{color:#999999}
+.cs-sublime-black-markup-keyword0{color:#ff3399}
+.cs-sublime-black-markup-keyword1{color:#a8ff58}
+.cs-sublime-black-markup-keyword2{color:#f0f0f0}
+.cs-sublime-black-markup-keyword3{color:#ff7e00}
+.cs-sublime-black-css-normal{color:#f0f0f0}
+.cs-sublime-black-css-comment{color:#999999}
+.cs-sublime-black-css-keyword0{color:#ff3399}
+.cs-sublime-black-css-keyword1{color:#4be6fa}
+.cs-sublime-black-css-keyword2{color:#E083FF}
+.cs-sublime-black-css-keyword3{color:#a8ff58}
+.cs-sublime-black-sql-normal{color:#f0f0f0}
+.cs-sublime-black-sql-comment{color:#999999}
+.cs-sublime-black-sql-string{color:#ffd500}
+.cs-sublime-black-sql-number{color:#c10aff}
+.cs-sublime-black-sql-keyword0{color:#ff3399}
+.cs-sublime-black-sql-keyword1{color:#4be6fa}
