@@ -58,7 +58,8 @@ _log('utility.js is loaded successfully');
         while(len > 0) {
           len--;
           var li_length = ol.children().length;
-          ol.children()[li_length - 1].remove();
+          var li_to_remove = ol.children()[li_length - 1];
+          $(li_to_remove).remove();
         }
         return;
       }
