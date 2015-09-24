@@ -9,6 +9,8 @@ _log('utility.js is loaded successfully');
       "theme" : "none"
   };
 
+  colorscript.option.theme = {};
+
   colorscript.optionList = {
     "mode" : ["text", "javascript"],
     "theme" : ["none"]
