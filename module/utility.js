@@ -3,11 +3,17 @@ _log('utility.js is loaded successfully');
 (function($) {
 
   var colorscript = window.colorscript || {};
+  var _editor = document.getElementById('code-text');
   colorscript.option = {
       "lineNumber": "on",
       "mode" : "text",
       "theme" : "none"
   };
+
+  colorscript.caret = {
+    "caretID" : "caret",
+    "node" : _editor
+  }
 
   colorscript.option.theme = {};
 
@@ -91,13 +97,69 @@ _log('utility.js is loaded successfully');
       return false;
     },
 
+    setCaret: function(node) {
+      var caretID = 'caret';
+      var cc = document.createElement('span');
+      cc.id = caretID;
+
+      window.getSelection().getRangeAt(0).insertNode(cc);
+
+      node.blur();
+    },
+
+    getCaret: function(node) {
+      var caretID = 'caret';
+
+      node.focus();
+
+      var range = document.createRange();
+      cc = document.getElementById(caretID);
+      range.selectNode(cc);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      range.deleteContents();
+    },
+
+    separateDivs: function() {
+      var node = document.getElementById("code-text");
+      colorscript.util.setCaret(node);
+
+      node.innerHTML = node.innerHTML.replace(/\n/gm, "</p><p>");
+
+      colorscript.util.getCaret(node);
+    },
+
+    getCaretPosition: function(element) {
+      var element = element || _editor;
+      var ie = (typeof document.selection != "undefined" && document.selection.type != "Control") && true;
+      var w3 = (typeof window.getSelection != "undefined") && true;
+
+      var caretOffset = 0;
+
+      if (w3) {
+          var range = window.getSelection().getRangeAt(0);
+          var preCaretRange = range.cloneRange();
+          preCaretRange.selectNodeContents(element);
+          preCaretRange.setEnd(range.endContainer, range.endOffset);
+          caretOffset = preCaretRange.toString().length;
+      } else if (ie) {
+          var textRange = document.selection.createRange();
+          var preCaretTextRange = document.body.createTextRange();
+          preCaretTextRange.moveToElementText(element);
+          preCaretTextRange.setEndPoint("EndToEnd", textRange);
+          caretOffset = preCaretTextRange.text.length;
+      }
+      return caretOffset;
+    },
+
     changeLineNumber: function() {
       if(colorscript.option.lineNumber == "off") return;
       var ol = $('div#linenumber ol');
       /* div가 한개 남았을때 백스페이스로 지울경우 div가 지워지면서 갯수가 0이 된다.
       이때 div를 하나 추가해주고 div_count를 강제로 1로 변환해준다.*/
       var p_count_in_pre = ($('pre#code-text p').length == 0) ? (function() {
-        $('pre#code-text').find('br').remove().end().append("<p id='first_p'></p>"); // br을 p로 바꿔준다
+        $('pre#code-text').find('br').remove().end().append("<p id='first_p'>\n</p>"); // br을 p로 바꿔준다
         // 커서를 새로 만들어준 p tag에 포커싱 시켜줘야 그 다음에 엔터를 치면 p 태그로 생성됨(안그러면 br 로 생성)
         var el = document.getElementById('first_p');
             range = document.createRange();
