@@ -46,7 +46,7 @@
 
       colorscript.util.setCaret(node);
 
-      node.innerHTML = node.innerHTML.replace(/\b(Boolean|Null|Undefined|String|Number)\b/g, "<span class='cs-default-common-keyword0'>$1</span>");
+      node.innerHTML = node.innerHTML.replace(/\b(Boolean|Null|Undefined|String|Number|Object)\b/g, "<span class='cs-default-common-keyword0'>$1</span>");
 
       colorscript.util.getCaret(node);
 
