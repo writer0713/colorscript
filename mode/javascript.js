@@ -14,8 +14,21 @@
 
       colorscript.util.getCaret(node);
 
+      this.operations();
+    },
+
+    "operations" : function() {
+      var node = document.getElementById("code-text");
+
+      colorscript.util.setCaret(node);
+
+      node.innerHTML = node.innerHTML.replace(/(\+|\-|\*|\%)/g, "<span class='cs-default-common-keyword1'>$1</span>");
+
+      colorscript.util.getCaret(node);
+
       this.number();
     },
+
     "number" : function() {
       var node = document.getElementById("code-text");
 
@@ -25,8 +38,33 @@
 
       colorscript.util.getCaret(node);
 
-      //this.makeResult(result);
+      this.primitive();
     },
+
+    "primitive" : function() {
+      var node = document.getElementById("code-text");
+
+      colorscript.util.setCaret(node);
+
+      node.innerHTML = node.innerHTML.replace(/\b(Boolean|Null|Undefined|String|Number)\b/g, "<span class='cs-default-common-keyword0'>$1</span>");
+
+      colorscript.util.getCaret(node);
+
+      this.variable();
+    },
+
+    "variable" : function() {
+      var node = document.getElementById("code-text");
+
+      colorscript.util.setCaret(node);
+
+      node.innerHTML = node.innerHTML.replace(/\b(var|typeof|new|function)\b/g, "<span class='cs-default-common-keyword1'>$1</span>");
+
+      colorscript.util.getCaret(node);
+
+      //this.operations();
+    },
+
     "makeResult" : function(result) {
       var node = document.getElementById("code-text");
       var caretID = 'caret';
