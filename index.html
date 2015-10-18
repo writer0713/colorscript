@@ -7,22 +7,66 @@
     <link rel="stylesheet" href="./lib/common.css" />
     <link rel="stylesheet" href="./lib/main.css" />
     <link rel="stylesheet" href="./theme/default.css" id="theme_css" />
+    <link rel="stylesheet" href="./thirdparty/bootstrap-3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./thirdparty/bootstrap-3.3.5/css/bootstrap-theme.min.css" />
   </head>
   <body>
-    <div id="editor" class="clearfix">
-      <div id="linenumber" class="fl">
+    <div id="editor" class="clearfix editor">
+      <div id="linenumber" class="fl linenumber">
         <ol>
           <li>1</li>
         </ol>
       </div>
-      <div id="text-area" class="fl">
-        <pre id="code-text" contenteditable="true"><p></p></pre>
+      <div id="text-area" class="fl text-area">
+        <pre id="code-text" class="code-text" contenteditable="true"><p></p></pre>
       </div>
     </div>
-    <script src="./thirdparty/jquery-1.11.3.min.js"></script>
-    <!--<script src="./thirdparty/jquery.caret-1.5.0.min.js"></script>-->
+
+    <div id="button-menu" class="button-menu">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="themeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          THEME
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="themeButton">
+          <li><a href="javascript:void(0)" id="default-theme" class="theme-options">default</a></li>
+          <li><a href="javascript:void(0)" id="sublime-black-theme" class="theme-options">sublime-black</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="modeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          MODE
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="modeButton">
+          <li><a href="javascript:void(0)" id="text" class="mode-options">text</a></li>
+          <li><a href="javascript:void(0)" id="javascript" class="mode-options">javascript</a></li>
+        </ul>
+      </div>
+      <br/><br/>
+      <div><button id="clearBtn" class="btn btn-default">CLEAR</button></div>
+      <div><button id="beautifyBtn" class="btn btn-default">BEUTIFY</button></div>
+      <div><button id="lineNumberOnBtn" class="btn btn-default" style="display:none">LineNumber ON</button></div>
+      <div><button id="lineNumberOffBtn" class="btn btn-default">LineNumber OFF</button></div>
+    </div>
+
+    <div id="editor2" class="clearfix editor">
+      <div id="linenumber-result" class="fl linenumber">
+        <ol>
+          <li>1</li>
+        </ol>
+      </div>
+      <div id="text-area-result" class="fl text-area">
+        <pre id="code-text-result" class="code-text" contenteditable="false"><p></p></pre>
+      </div>
+    </div>
+    <script src="./thirdparty/jquery/jquery-1.11.3.min.js"></script>
+    <script src="./thirdparty/bootstrap-3.3.5/js/bootstrap.min.js"></script>
     <script src="./module/logger.js"></script>
     <script src="./module/utility.js"></script>
     <script src="./lib/colorscript.js"></script>
+    <script src="./mode/text.js"></script>
+    <script src="./mode/javascript.js"></script>
   </body>
 </html>

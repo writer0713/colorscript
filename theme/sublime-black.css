@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-#editor {background-color: rgb(39, 39, 39);}
+.editor {background-color: rgb(39, 39, 39);}
 p {color: rgb(240, 240, 240);}
 
 .cs-sublime-black-background-color-0{color:#}

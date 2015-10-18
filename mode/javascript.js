@@ -1,9 +1,21 @@
 (function($) {
 
   var colorscript = window.colorscript || {};
-  colorscript.regex = {};
+  colorscript.regex = window.colorscript.regex || {};
 
   colorscript.regex.javascript = {
+    "color" : function(node) {
+
+      var preffix = 'cs-' + colorscript.option.theme + '-common-';
+
+      node.innerHTML = node.innerHTML.replace(/<\/?span[^i|>]*>/g, "");
+      node.innerHTML = node.innerHTML.replace('<span id=\"caret\">', '<span id=\"caret\"></span>');
+      node.innerHTML = node.innerHTML.replace(/([0-9])/g, "<span class=" + preffix + 'number' + ">$1</span>");
+      node.innerHTML = node.innerHTML.replace(/(\++|\--|\*)/g, "<span class=" + preffix + 'keyword1' + ">$1</span>");
+      node.innerHTML = node.innerHTML.replace(/\b(Boolean|Null|Undefined|String|Number|Object|alert|console.log|this)\b/g, "<span class=" + preffix+ 'keyword0' + ">$1</span>");
+      node.innerHTML = node.innerHTML.replace(/\b(var|typeof|new|function|for|attr)\b/g, "<span class=" + preffix + 'keyword1' + ">$1</span>");
+    },
+
     "removeSpan" : function() {
       var node = document.getElementById("code-text");
 
